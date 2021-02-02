@@ -1,6 +1,6 @@
 # The Tetsy Bitcoin client.
 
-[![Build Status][travis-image]][travis-url] [![Snap Status](https://build.snapcraft.io/badge/paritytech/parity-bitcoin.svg)](https://build.snapcraft.io/user/paritytech/parity-bitcoin)
+[![Build Status][travis-image]][travis-url]
 
 - [Installing from source](#installing-from-source)
 
