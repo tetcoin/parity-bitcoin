@@ -25,11 +25,11 @@
 [graph]: ./tools/graph.svg
 [travis-image]: https://travis-ci.com/tetcoin/tetsy-bitcoin.svg?token=DMFvZu71iaTbUYx9UypX&branch=master
 [travis-url]: https://travis-ci.com/tetcoin/tetsy-bitcoin
-[doc-url]: https://tetcoin.github.io/tetsy-bitcoin/pbtc/index.html
+[doc-url]: https://tetcoin.github.io/tetsy-bitcoin/tbtc/index.html
 
 ## Installing from source
 
-Installing `pbtc` from source requires `rustc` and `cargo`.
+Installing `tbtc` from source requires `rustc` and `cargo`.
 
 Minimal supported version is `rustc 1.23.0 (766bd11c8 2018-01-01)`
 
@@ -54,28 +54,28 @@ sudo apt-get update
 sudo apt-get install build-essential
 ```
 
-#### Clone and build pbtc
+#### Clone and build tbtc
 
-Now let's clone `pbtc` and enter it's directory:
+Now let's clone `tbtc` and enter it's directory:
 
 ```
 git clone https://github.com/tetcoin/tetsy-bitcoin
 cd tetsy-bitcoin
 ```
 
-`pbtc` can be build in two modes. `--debug` and `--release`. Debug is the default.
+`tbtc` can be build in two modes. `--debug` and `--release`. Debug is the default.
 
 ```
-# builds pbtc in debug mode
-cargo build -p pbtc
+# builds tbtc in debug mode
+cargo build -p tbtc
 ```
 
 ```
-# builds pbtc in release mode
-cargo build -p pbtc --release
+# builds tbtc in release mode
+cargo build -p tbtc --release
 ```
 
-`pbtc` is now available at either `./target/debug/pbtc` or `./target/release/pbtc`.
+`tbtc` is now available at either `./target/debug/tbtc` or `./target/release/tbtc`.
 
 ## Installing the snap
 
@@ -87,7 +87,7 @@ sudo snap install tetsy-bitcoin --edge
 
 ## Running tests
 
-`pbtc` has internal unit tests and it conforms to external integration tests.
+`tbtc` has internal unit tests and it conforms to external integration tests.
 
 #### Running unit tests
 
@@ -114,8 +114,8 @@ Now we can run them using the command:
 It is also possible to run regtests manually:
 
 ```
-# let's start pbtc in regtest compatible mode
-./target/release/pbtc --btc --regtest
+# let's start tbtc in regtest compatible mode
+./target/release/tbtc --btc --regtest
 
 # now in second shell window
 cd $HOME
@@ -127,26 +127,26 @@ java -jar pull-tests-f56eec3.jar
 
 ## Going online
 
-By default tetsy connects to bitcoind-seednodes. Full list is available [here](./pbtc/seednodes.rs).
+By default tetsy connects to bitcoind-seednodes. Full list is available [here](./tbtc/seednodes.rs).
 
 Before starting synchronization, you must decide - which fork to follow - Bitcoin Core (`--btc` flag) or Bitcoin Cash (`--bch` flag). On next start, passing the same flag is optional, as the database is already bound to selected fork and won't be synchronized using other verification rules.
 
 To start syncing the main network, just start the client, passing selected fork flag. For example:
 
 ```
-./target/release/pbtc --btc
+./target/release/tbtc --btc
 ```
 
 To start syncing the testnet:
 
 ```
-./target/release/pbtc --btc --testnet
+./target/release/tbtc --btc --testnet
 ```
 
 To not print any syncing progress add `--quiet` flag:
 
 ```
-./target/release/pbtc --btc --quiet
+./target/release/tbtc --btc --quiet
 ```
 
 ## Importing bitcoind database
@@ -155,18 +155,18 @@ It is possible to import existing `bitcoind` database:
 
 ```
 # where $BITCOIND_DB is path to your bitcoind database, e.g., "/Users/user/Library/Application Support"
-./target/release/pbtc import "$BITCOIND_DB/Bitcoin/blocks"
+./target/release/tbtc import "$BITCOIND_DB/Bitcoin/blocks"
 ```
 
 By default import verifies imported the blocks. You can disable this, by adding `--verification-level=none` flag.
 
 ```
-./target/release/pbtc --btc --verification-level=none import "$BITCOIND_DB/Bitcoin/blocks"
+./target/release/tbtc --btc --verification-level=none import "$BITCOIND_DB/Bitcoin/blocks"
 ```
 
 ## Command line interface
 
-Full list of CLI options, which is available under `pbtc --help`:
+Full list of CLI options, which is available under `tbtc --help`:
 
 ```
 tbtc 0.1.0
@@ -174,7 +174,7 @@ Tetcoin <support@tetcoin.org>
 Tetsy Bitcoin client
 
 USAGE:
-    pbtc [FLAGS] [OPTIONS] [SUBCOMMAND]
+    tbtc [FLAGS] [OPTIONS] [SUBCOMMAND]
 
 FLAGS:
         --bch             Use Bitcoin Cash verification rules (BCH).
@@ -338,10 +338,10 @@ This is a section only for developers and power users.
 You can enable detailed client logging by setting the environment variable `RUST_LOG`, e.g.,
 
 ```
-RUST_LOG=verification=info ./target/release/pbtc --btc
+RUST_LOG=verification=info ./target/release/tbtc --btc
 ```
 
-`pbtc` started with this environment variable will print all logs coming from `verification` module with verbosity `info` or higher. Available log levels are:
+`tbtc` started with this environment variable will print all logs coming from `verification` module with verbosity `info` or higher. Available log levels are:
 
 - `error`
 - `warn`
@@ -352,15 +352,15 @@ RUST_LOG=verification=info ./target/release/pbtc --btc
 It's also possible to start logging from multiple modules in the same time:
 
 ```
-RUST_LOG=sync=trace,p2p=trace,verification=trace,db=trace ./target/release/pbtc --btc
+RUST_LOG=sync=trace,p2p=trace,verification=trace,db=trace ./target/release/tbtc --btc
 ```
 
 ## Internal documentation
 
-Once released, `pbtc` documentation will be available [here][doc-url]. Meanwhile it's only possible to build it locally:
+Once released, `tbtc` documentation will be available [here][doc-url]. Meanwhile it's only possible to build it locally:
 
 ```
 cd tetsy-bitcoin
 ./tools/doc.sh
-open target/doc/pbtc/index.html
+open target/doc/tbtc/index.html
 ```
