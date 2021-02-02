@@ -1,8 +1,6 @@
-# The Parity Bitcoin client.
+# The Tetsy Bitcoin client.
 
 [![Build Status][travis-image]][travis-url] [![Snap Status](https://build.snapcraft.io/badge/paritytech/parity-bitcoin.svg)](https://build.snapcraft.io/user/paritytech/parity-bitcoin)
-
-Gitter [![Gitter https://gitter.im/paritytech/parity-bitcoin](https://badges.gitter.im/paritytech/parity-bitcoin.svg)](https://gitter.im/paritytech/parity-bitcoin)
 
 - [Installing from source](#installing-from-source)
 
@@ -25,9 +23,9 @@ Gitter [![Gitter https://gitter.im/paritytech/parity-bitcoin](https://badges.git
 - [Project Graph][graph]
 
 [graph]: ./tools/graph.svg
-[travis-image]: https://travis-ci.com/paritytech/parity-bitcoin.svg?token=DMFvZu71iaTbUYx9UypX&branch=master
-[travis-url]: https://travis-ci.com/paritytech/parity-bitcoin
-[doc-url]: https://paritytech.github.io/parity-bitcoin/pbtc/index.html
+[travis-image]: https://travis-ci.com/tetcoin/tetsy-bitcoin.svg?token=DMFvZu71iaTbUYx9UypX&branch=master
+[travis-url]: https://travis-ci.com/tetcoin/tetsy-bitcoin
+[doc-url]: https://tetcoin.github.io/tetsy-bitcoin/pbtc/index.html
 
 ## Installing from source
 
@@ -61,8 +59,8 @@ sudo apt-get install build-essential
 Now let's clone `pbtc` and enter it's directory:
 
 ```
-git clone https://github.com/paritytech/parity-bitcoin
-cd parity-bitcoin
+git clone https://github.com/tetcoin/tetsy-bitcoin
+cd tetsy-bitcoin
 ```
 
 `pbtc` can be build in two modes. `--debug` and `--release`. Debug is the default.
@@ -84,7 +82,7 @@ cargo build -p pbtc --release
 In any of the [supported Linux distros](https://snapcraft.io/docs/core/install):
 
 ```
-sudo snap install parity-bitcoin --edge
+sudo snap install tetsy-bitcoin --edge
 ```
 
 ## Running tests
@@ -129,7 +127,7 @@ java -jar pull-tests-f56eec3.jar
 
 ## Going online
 
-By default parity connects to bitcoind-seednodes. Full list is available [here](./pbtc/seednodes.rs).
+By default tetsy connects to bitcoind-seednodes. Full list is available [here](./pbtc/seednodes.rs).
 
 Before starting synchronization, you must decide - which fork to follow - Bitcoin Core (`--btc` flag) or Bitcoin Cash (`--bch` flag). On next start, passing the same flag is optional, as the database is already bound to selected fork and won't be synchronized using other verification rules.
 
@@ -171,9 +169,9 @@ By default import verifies imported the blocks. You can disable this, by adding 
 Full list of CLI options, which is available under `pbtc --help`:
 
 ```
-pbtc 0.1.0
-Parity Technologies <info@parity.io>
-Parity Bitcoin client
+tbtc 0.1.0
+Tetcoin <support@tetcoin.org>
+Tetsy Bitcoin client
 
 USAGE:
     pbtc [FLAGS] [OPTIONS] [SUBCOMMAND]
@@ -216,7 +214,7 @@ The JSON-RPC interface is served on port :8332 for mainnet and :18332 for testne
 
 #### Network
 
-The Parity-bitcoin `network` interface.
+The Tetsy-bitcoin `network` interface.
 
 ##### addnode
 
@@ -250,7 +248,7 @@ Get the peer count.
 
 #### Blockchain
 
-The Parity-bitcoin `blockchain` data interface.
+The Tetsy-bitcoin `blockchain` data interface.
 
 ##### getbestblockhash
 
@@ -296,7 +294,7 @@ Get statistics about the unspent transaction output set.
 
 #### Miner
 
-The Parity-bitcoin `miner` data interface.
+The Tetsy-bitcoin `miner` data interface.
 
 ##### getblocktemplate
 
@@ -306,7 +304,7 @@ Get block template for mining.
 
 #### Raw
 
-The Parity-bitcoin `raw` data interface.
+The Tetsy-bitcoin `raw` data interface.
 
 
 ##### getrawtransaction
@@ -362,7 +360,7 @@ RUST_LOG=sync=trace,p2p=trace,verification=trace,db=trace ./target/release/pbtc 
 Once released, `pbtc` documentation will be available [here][doc-url]. Meanwhile it's only possible to build it locally:
 
 ```
-cd parity-bitcoin
+cd tetsy-bitcoin
 ./tools/doc.sh
 open target/doc/pbtc/index.html
 ```
